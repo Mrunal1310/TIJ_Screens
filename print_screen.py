@@ -46,8 +46,9 @@ class PrintScreen(ctk.CTkFrame):
         self.create_button('print_exit_icon.png', 'Exit', 170, "#FFC300", 2, (10, 10), command= self.go_home_callback)
 
     def create_button(self, image_name, text, height, fg_color, row, pady, command=None):
-        image_path = os.path.join("images", image_name)
+        # image_path = os.path.join("images", image_name)
         try:
+            image_path = os.path.join(os.path.dirname(__file__), "images", image_name)            
             image = ctk.CTkImage(dark_image=Image.open(image_path), size=(30, 30))
             button = ctk.CTkButton(self, text=text, image=image, compound='top', command=command,
                                    height=height, hover=False, fg_color=fg_color, bg_color="#2F98EE",
@@ -85,8 +86,9 @@ class PrintScreen(ctk.CTkFrame):
         self.create_button_frame('print_printing_icon.png', (60, 60), 'Start printing', 290, 170, "#2AAA8A", (300, 0), (0, 0), 'nw')
 
     def create_button_frame(self, image_name, size, text, width, height, fg_color, padx, pady, sticky, command=None):
-        image_path = os.path.join("images", image_name)
+        # image_path = os.path.join("images", image_name)
         try:
+            image_path = os.path.join(os.path.dirname(__file__), "images", image_name)
             image = ctk.CTkImage(dark_image=Image.open(image_path), size=size)
             button = ctk.CTkButton(self.frame, text=text, image=image, compound='top', command=command,
                                    hover=False, fg_color=fg_color, corner_radius=20,
@@ -97,7 +99,3 @@ class PrintScreen(ctk.CTkFrame):
         except Exception as e:
             print(f"An error occurred: {e}")
 
-
-if __name__ == "__main__":
-    app = App()
-    app.mainloop()
